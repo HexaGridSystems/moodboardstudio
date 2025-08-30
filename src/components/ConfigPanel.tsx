@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './ConfigPanel.css'
 
 interface CanvasItem {
@@ -11,9 +11,10 @@ interface CanvasItem {
 
 interface ConfigPanelProps {
   setItems: React.Dispatch<React.SetStateAction<CanvasItem[]>>
+  onClose?: () => void
 }
 
-const ConfigPanel: React.FC<ConfigPanelProps> = ({ setItems }) => {
+const ConfigPanel: React.FC<ConfigPanelProps> = ({ setItems, onClose }) => {
   const addItem = (type: string, content: string) => {
     const newItem: CanvasItem = {
       id: Date.now().toString(),
@@ -27,8 +28,16 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({ setItems }) => {
 
   const colorSwatches = ['#B3001B', '#E9B949', '#F5F5F5', '#5A3E36', '#C77D33']
 
+  useEffect(() => {
+    if (!onClose) return
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
   return (
     <div className="config-panel">
+      <button className="panel-close" aria-label="Close configuration" onClick={onClose}>×</button>
       <h3>Wedding Configuration</h3>
       <div className="config-section">
         <h4>Color Swatches</h4>

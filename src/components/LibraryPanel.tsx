@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './LibraryPanel.css'
 
-interface LibraryPanelProps { onAdd: (type: string, content: string) => void }
+interface LibraryPanelProps { onAdd: (type: string, content: string) => void; onClose?: () => void }
 
 interface CeremonyItem { name: string; desc: string }
 interface CeremonySection { title: string; items: CeremonyItem[] }
@@ -92,14 +92,24 @@ const southCeremonySections: CeremonySection[] = [
   }
 ]
 
-const LibraryPanel: React.FC<LibraryPanelProps> = ({ onAdd }) => {
+const LibraryPanel: React.FC<LibraryPanelProps> = ({ onAdd, onClose }) => {
   const [region, setRegion] = useState<'north' | 'south'>('north')
   const currentSections = region === 'north' ? northCeremonySections : southCeremonySections
   const [open, setOpen] = useState<Record<string, boolean>>({})
   const toggle = (title: string) => setOpen(o => ({ ...o, [title]: !o[title] }))
 
+  useEffect(() => {
+    if (!onClose) return
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
   return (
     <aside className="library" aria-label="Asset library">
+      <button className="panel-close" aria-label="Close library" onClick={onClose}>×</button>
       <div className="library__section" style={{ gap: 8 }}>
         <h4 style={{ marginBottom: 6 }}>Region</h4>
         <div style={{ display: 'flex', gap: 8 }}>

@@ -1,4 +1,4 @@
-.config-panel { width:320px; background:var(--color-surface-alt); border-left:1px solid var(--color-border); padding:16px 16px 40px; overflow-y:auto; display:flex; flex-direction:column; gap:24px; }
+.config-panel { position:relative; width:320px; background:var(--color-surface-alt); border-left:1px solid var(--color-border); padding:16px 16px 40px; overflow-y:auto; display:flex; flex-direction:column; gap:24px; }
 
 .config-section {
   margin-bottom: 20px;
@@ -10,3 +10,6 @@
 
 .config-section button { display:block; width:100%; margin-bottom:6px; padding:8px 10px; background:var(--color-surface); border:1px solid var(--color-border); border-radius:6px; cursor:pointer; font-size:12px; text-align:left; }
 .config-section button:hover { background:var(--color-surface-hover); }
+
+/* Ensure library panel also positioned for close btn */
+.library { position:relative; }

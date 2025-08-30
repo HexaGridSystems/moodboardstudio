@@ -1,2 +1,7 @@
 .app { height:100vh; display:flex; flex-direction:column; background:var(--color-app-bg); color:var(--color-text); }
 .studio-body { flex:1; display:flex; min-height:0; }
+
+.reopen-btn { position:fixed; top:56px; z-index:60; background:var(--color-surface); color:var(--color-text); border:1px solid var(--color-border); padding:6px 10px; font-size:12px; border-radius:0 6px 6px 0; cursor:pointer; box-shadow:0 2px 4px rgba(0,0,0,.15); }
+.reopen-btn--left { left:0; }
+.reopen-btn--right { right:0; border-radius:6px 0 0 6px; }
+.reopen-btn:hover { background:var(--color-surface-hover); }
