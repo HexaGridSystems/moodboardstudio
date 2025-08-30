@@ -1,0 +1,2 @@
+.app { height:100vh; display:flex; flex-direction:column; background:var(--color-app-bg); color:var(--color-text); }
+.studio-body { flex:1; display:flex; min-height:0; }
