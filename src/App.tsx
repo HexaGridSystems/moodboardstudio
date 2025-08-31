@@ -4,6 +4,7 @@ import Canvas from './components/Canvas'
 import ConfigPanel from './components/ConfigPanel'
 import Chat from './components/Chat'
 import TopBar from './components/TopBar'
+import PromptPanel from './components/PromptPanel'
 import LibraryPanel from './components/LibraryPanel'
 
 interface CanvasItem {
@@ -18,6 +19,8 @@ function App() {
   const [canvasItems, setCanvasItems] = useState<CanvasItem[]>([])
   const [showLibrary, setShowLibrary] = useState(true)
   const [showConfig, setShowConfig] = useState(true)
+  const [weddingDetails, setWeddingDetails] = useState('')
+  const [promptCollapsed, setPromptCollapsed] = useState(false)
 
   const addItem = (type: string, content: string) => {
     setCanvasItems(prev => [...prev, { id: Date.now().toString() + Math.random(), type, content, x: Math.random()*1000, y: Math.random()*800 }])
@@ -64,6 +67,15 @@ function App() {
         >Config ◂</button>
       )}
       <Chat />
+      <PromptPanel
+        value={weddingDetails}
+        onChange={setWeddingDetails}
+        onGenerateImages={() => console.log('Generate images from:', weddingDetails)}
+        collapsed={promptCollapsed}
+        onToggle={() => setPromptCollapsed(c => !c)}
+  leftOffset={showLibrary ? 240 : 0}
+  rightOffset={showConfig ? 320 : 0}
+      />
     </div>
   )
 }
