@@ -4,17 +4,15 @@ import './TopBar.css'
 interface TopBarProps {
   onNew?: () => void
   onClear?: () => void
-  onGenerate?: () => void
 }
 
-const TopBar: React.FC<TopBarProps> = ({ onNew, onClear, onGenerate }) => {
+const TopBar: React.FC<TopBarProps> = ({ onNew, onClear }) => {
   return (
     <header className="topbar">
       <div className="topbar__left">
         <div className="brand">🎨 Indian Wedding Studio</div>
         <nav className="topbar__nav">
           <button onClick={onNew}>New Board</button>
-          <button onClick={onGenerate}>Generate</button>
           <button onClick={onClear}>Clear</button>
         </nav>
       </div>

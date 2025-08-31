@@ -27,25 +27,12 @@ function App() {
   }
 
   const clearBoard = () => setCanvasItems([])
-  const generateBoard = () => {
-    const seed = [
-      { type: 'theme', content: 'Traditional Rich', x: 120, y: 40 },
-      { type: 'color', content: '#B3001B', x: 80, y: 140 },
-      { type: 'color', content: '#E9B949', x: 140, y: 140 },
-      { type: 'color', content: '#F5F5F5', x: 200, y: 140 },
-      { type: 'element', content: 'Mandap', x: 420, y: 260 },
-      { type: 'motif', content: 'Garland', x: 320, y: 320 },
-      { type: 'motif', content: 'Elephant', x: 520, y: 320 }
-    ]
-    setCanvasItems(seed.map(s => ({ id: crypto.randomUUID?.() || (Date.now().toString()+Math.random()), ...s })))
-  }
 
   return (
     <div className="app">
       <TopBar
         onNew={() => setCanvasItems([])}
         onClear={clearBoard}
-        onGenerate={generateBoard}
       />
       <div className="studio-body">
         {showLibrary && <LibraryPanel onAdd={addItem} onClose={() => setShowLibrary(false)} />}
