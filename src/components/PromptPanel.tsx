@@ -19,7 +19,7 @@ const PromptPanel: React.FC<PromptPanelProps> = ({ value, onChange, onGenerateIm
     >
       <div className="prompt-panel__bar">
         <strong style={{ fontSize: 12 }}>Wedding Prompt</strong>
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
           {!collapsed && (
             <button
               className="generate-images-btn"

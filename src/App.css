@@ -5,3 +5,10 @@
 .reopen-btn--left { left:0; }
 .reopen-btn--right { right:0; border-radius:6px 0 0 6px; }
 .reopen-btn:hover { background:var(--color-surface-hover); }
+
+/* Generating overlay */
+.generating-overlay { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; z-index:120; }
+.generating-overlay__inner { background:rgba(0,0,0,0.35); backdrop-filter:blur(2px); padding:28px 40px; border-radius:16px; display:flex; flex-direction:column; align-items:center; gap:14px; box-shadow:0 4px 20px rgba(0,0,0,0.3); }
+.spinner { width:40px; height:40px; border-radius:50%; border:4px solid rgba(255,255,255,0.3); border-top-color: #fff; animation:spin 0.9s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.generating-overlay__text { font-size:13px; letter-spacing:.5px; color:#fff; font-weight:500; }

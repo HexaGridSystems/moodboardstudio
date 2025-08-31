@@ -2,6 +2,8 @@
 .studio-canvas:active { cursor:grabbing; }
 .canvas-transform { position:absolute; top:0; left:0; width:4000px; height:4000px; transform-origin:0 0; background-image:var(--grid-pattern); background-size:40px 40px; }
 .canvas-item { position:absolute; min-width:64px; min-height:40px; padding:8px 10px; background:var(--color-surface); border:1px solid var(--color-border); border-radius:8px; font-size:12px; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 4px rgba(0,0,0,.15); user-select:none; }
+.canvas-item.image { padding:0; overflow:hidden; }
+.canvas-item.image img { display:block; max-width:240px; max-height:180px; object-fit:cover; border-radius:8px; }
 .color-chip { width:40px; height:40px; border-radius:6px; border:1px solid var(--color-border-strong); }
 .canvas-overlay { position:absolute; font-size:10px; letter-spacing:.5px; background:rgba(0,0,0,.4); color:#fff; padding:4px 6px; border-radius:4px; pointer-events:none; z-index:10; }
 .canvas-overlay.top-left { top:8px; left:8px; }
